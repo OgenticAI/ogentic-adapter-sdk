@@ -1,0 +1,14 @@
+{
+  "input": [
+    "",
+    ": keep-alive comment",
+    "data: {\"v\":1}",
+    "",
+    ": another",
+    "data: {\"v\":2}"
+  ],
+  "expected_deltas": [
+    {"v": 1},
+    {"v": 2}
+  ]
+}

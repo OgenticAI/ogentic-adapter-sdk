@@ -1,0 +1,16 @@
+{
+  "input": [
+    {
+      "role": "system",
+      "content": [
+        {"type": "text", "text": "Part A"},
+        {"type": "text", "text": "Part B"}
+      ]
+    },
+    {"role": "user", "content": "go"}
+  ],
+  "expected_system": "Part A\n\nPart B",
+  "expected_messages": [
+    {"role": "user", "content": "go"}
+  ]
+}

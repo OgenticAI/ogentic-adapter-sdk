@@ -1,0 +1,10 @@
+{
+  "input": [
+    {"role": "system", "content": "Be careful."},
+    {"role": "user", "content": "Summarise."}
+  ],
+  "expected_system": "Be careful.",
+  "expected_messages": [
+    {"role": "user", "content": "Summarise."}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "input": [
+    "data: {\"choices\":[{\"delta\":{\"content\":\"Hel\"}}]}",
+    "",
+    "data: {\"choices\":[{\"delta\":{\"content\":\"lo\"}}]}",
+    ""
+  ],
+  "expected_deltas": [
+    {"choices": [{"delta": {"content": "Hel"}}]},
+    {"choices": [{"delta": {"content": "lo"}}]}
+  ]
+}

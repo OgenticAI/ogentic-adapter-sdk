@@ -1,0 +1,10 @@
+{
+  "input": [
+    "event: message",
+    "id: 42",
+    "data: {\"v\":1}"
+  ],
+  "expected_deltas": [
+    {"v": 1}
+  ]
+}
