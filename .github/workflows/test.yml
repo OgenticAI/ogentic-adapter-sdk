@@ -1,0 +1,53 @@
+# OGE-1180 — CI: lint + strict typecheck + tests on every push and PR.
+#
+# Quality gates per CLAUDE.md §4/§8:
+#   - ruff lint clean
+#   - mypy --strict clean
+#   - pytest passes
+#
+# Matrix covers Python 3.11 and 3.12 — the sdk's stated `requires-python`
+# floor plus the next minor, per the technical brief.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Lint + typecheck + tests (py${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - name: Install ogentic-adapter-sdk + dev deps
+        run: pip install -e ".[dev]"
+
+      - name: Ruff lint
+        run: ruff check src/ tests/
+
+      - name: Mypy strict typecheck
+        run: mypy src/ogentic_adapter_sdk/
+
+      - name: Pytest
+        run: pytest tests/ -v
