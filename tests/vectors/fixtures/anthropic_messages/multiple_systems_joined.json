@@ -1,0 +1,11 @@
+{
+  "input": [
+    {"role": "system", "content": "First instruction."},
+    {"role": "user", "content": "Hi."},
+    {"role": "system", "content": "Second instruction."}
+  ],
+  "expected_system": "First instruction.\n\nSecond instruction.",
+  "expected_messages": [
+    {"role": "user", "content": "Hi."}
+  ]
+}

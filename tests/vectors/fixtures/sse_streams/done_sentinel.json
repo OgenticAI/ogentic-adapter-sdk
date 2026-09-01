@@ -1,0 +1,10 @@
+{
+  "input": [
+    "data: {\"v\":1}",
+    "data: [DONE]",
+    "data: {\"v\":2}"
+  ],
+  "expected_deltas": [
+    {"v": 1}
+  ]
+}

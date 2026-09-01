@@ -1,0 +1,9 @@
+{
+  "description": "SSE stream containing malformed JSON in a data: line",
+  "input": [
+    "data: {\"choice\":0,\"delta\":{\"role\":\"assistant\",\"content\":\"Hello\"}}",
+    "data: {broken json without closing brace",
+    "data: {\"choice\":1,\"delta\":{\"content\":\"world\"}}"
+  ],
+  "note": "The second line contains malformed JSON; aiter_sse_deltas should raise json.JSONDecodeError when it tries to parse it."
+}
